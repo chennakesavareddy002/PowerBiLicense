@@ -3,7 +3,6 @@ package com.pbi.service;
 import com.pbi.bean.User;
 import com.pbi.dao.PbiLicenseDAO;
 import com.pbi.resources.Factory;
-import com.pbi.resources.GenerateRequestID;
 
 public class PbiLicenseServiceImpl implements PbiLicenseService {
 	@Override
@@ -11,9 +10,8 @@ public class PbiLicenseServiceImpl implements PbiLicenseService {
 		Factory factory=new Factory();
 		PbiLicenseDAO pbiLicenseDAO = factory.getPbiLicenseDao();
 		try {
-			String returmadValue=pbiLicenseDAO.setDataToDatabase(user);
+			Integer returmadValue=pbiLicenseDAO.setDataToDatabase(user);
 			if(returmadValue==null) {
-				GenerateRequestID.revokeRequestId(returmadValue);
 				throw new Exception("PBILICENSESERVICE.FAILD");
 			}
 			else {

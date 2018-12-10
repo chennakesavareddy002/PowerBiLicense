@@ -2,25 +2,30 @@ package com.pbi.entity;
 
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 
 @Entity
 @Table(name="PBILICENSE")
+@GenericGenerator(name="incrementGenerator",strategy="increment")
 public class UserEntity {
 
 	@Id
-	private String requestId=null;
+	@GeneratedValue(generator="incrementGenerator")
+	private Integer requestId=null;
 	private String aliasName=null;
 	private String emailAddress=null;
 	private String typeOfLicense=null;
 	private String requestedDate=null;
 	
-	public String getRequestId() {
+	public Integer getRequestId() {
 		return requestId;
 	}
-	public void setRequestId(String requestId) {
+	public void setRequestId(Integer requestId) {
 		this.requestId = requestId;
 	}
 	public String getRequestedDate() {

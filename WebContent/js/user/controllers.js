@@ -3,11 +3,15 @@ app.controller('pbilicensecontroller',['$scope','$http',function($scope,$http){
 	$scope.user.aliasName=null;
 	$scope.user.emailAddress=null;
 	$scope.user.typeOfLicense=null;
-	$scope.aliasName=null;
 	$scope.domainName=null;
 	$scope.showReconfirm=false;
+	$scope.reConfirmedUser={};
+	$scope.reConfirmedUser.aliasName=null;
+	$scope.reConfirmedUser.emailAddress=null;
+	$scope.reConfirmedUser.typeOfLicense=null;
+	$scope.reConfirmedDomainName=null;
 	
-	$scope.validateInputs=function(){
+	/*$scope.validateInputs=function(){
 		var basicValidateArray=["null","na"];
 		var pattern=/[\w]+$/;
 		if (basicValidateArray.indexOf($scope.aliasName.toLowerCase())!=-1){
@@ -19,13 +23,10 @@ app.controller('pbilicensecontroller',['$scope','$http',function($scope,$http){
 				$scope.returneMessage="Please enter valid input without special characters";
 			};
 		};
-	};
+	};*/
 	
-	$scope.porvideLicense=function(){
-		$scope.user.aliasName=$scope.aliasName;
-		$scope.user.emailAddress=$scope.aliasName+'@'+$scope.domainName+'.wal-mart.com';
-		var jsonFormat=JSON.stringify($scope.user);
-		alert(jsonFormat);
+	$scope.porvideLicense=function(user){
+		var jsonFormat=JSON.stringify(user);
 		$http.post(getURI()+'PbiLicense/ProvideLicese',jsonFormat).then(function(response){
 			$scope.returneMessage=response.data.message;
 		},function(response){
@@ -33,8 +34,25 @@ app.controller('pbilicensecontroller',['$scope','$http',function($scope,$http){
 		});
 	};
 	
-	$scope.reConfirm=function(){
+	$scope.reConfirmFunction=function(){
 		$scope.showReconfirm=true;
 	};
 	
+	$scope.reConfirm=function(){
+		if($scope.user.aliasName==$scope.reConfirmedUser.aliasName){
+			if($scope.domainName==$scope.reConfirmedDomainName){
+				if($scope.user.typeOfLicense==$scope.reConfirmedUser.typeOfLicense){
+					$scope.reConfirmedUser.emailAddress=$scope.reConfirmedUser.aliasName+'@'+$scope.reConfirmedDomainName+'.wal-mart.com';
+					alert($scope.reConfirmedUser.emailAddress)
+					$scope.porvideLicense($scope.reConfirmedUser);
+				}else{
+					$scope.returneMessage="Missmach in type of license";
+				}
+			}else{
+				$scope.returneMessage="Missmach in domain names";
+			}
+		}else{
+			$scope.returneMessage="Missmach in alias names";
+		}
+	};
 	}]);
