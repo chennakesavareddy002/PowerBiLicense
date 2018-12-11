@@ -5,6 +5,7 @@ app.controller('pbilicensecontroller',['$scope','$http',function($scope,$http){
 	$scope.user.typeOfLicense=null;
 	$scope.domainName=null;
 	$scope.showReconfirm=false;
+	$scope.domainNameList=["AR","BR","CA","CAM","CL","CN","EMEA","HOMEOFFICE","IN","JP","MX","PR","UK","US","WMCT","WMSC"];
 	$scope.reConfirmedUser={};
 	$scope.reConfirmedUser.aliasName=null;
 	$scope.reConfirmedUser.emailAddress=null;

@@ -26,28 +26,13 @@
 		      	<td><h4>@</h4>
 		      	<td><select ng-model="domainName" required="required">
 		      			<option value="" selected disabled>--Secect Your Domain--</option>
-		      			<option value="AR" >AR</option>
-		      			<option value="BR" >BR</option>
-		      			<option value="CA" >CA</option>
-		      			<option value="CAM" >CAM</option>
-		      			<option value="CL" >CL</option>
-		      			<option value="CN" >CN</option>
-		      			<option value="EMEA" >EMEA</option>
-		      			<option value="HOMEOFFICE" >HOMEOFFICE</option>
-		      			<option value="IN" >IN</option>
-		      			<option value="JP" >JP</option>
-		      			<option value="MX" >MX</option>
-		      			<option value="PR" >PR</option>
-		      			<option value="UK" >UK</option>
-		      			<option value="US" >US</option>
-		      			<option value="WMCT" >WMCT</option>
-		      			<option value="WMSC" >WMSC</option>
+		      			<option ng-repeat="name in domainNameList" ng-value="name">{{name}}</option>
 		      		</select>
 		      	<td><h4>.wal-mart.com</h4>
 		</table>
 		<div>Type of License:-  <input type="radio" name="licensetype" value="Free" ng-model="user.typeOfLicense" required="required">Free  <input type="radio" name="licensetype" value="Pro" ng-model="user.typeOfLicense" required="required">Pro</div>
 		<div style="height: 28px; "></div>
-		<div><button>submit</button></div>
+		<div><button>Confirm</button></div>
 	</form>
 </div>
 <div ng-show="showReconfirm">
@@ -60,28 +45,13 @@
 		      	<td><h4>@</h4>
 		      	<td><select ng-model="reConfirmedDomainName" required="required">
 		      			<option value="" selected disabled>--Secect Your Domain--</option>
-		      			<option value="AR" >AR</option>
-		      			<option value="BR" >BR</option>
-		      			<option value="CA" >CA</option>
-		      			<option value="CAM" >CAM</option>
-		      			<option value="CL" >CL</option>
-		      			<option value="CN" >CN</option>
-		      			<option value="EMEA" >EMEA</option>
-		      			<option value="HOMEOFFICE" >HOMEOFFICE</option>
-		      			<option value="IN" >IN</option>
-		      			<option value="JP" >JP</option>
-		      			<option value="MX" >MX</option>
-		      			<option value="PR" >PR</option>
-		      			<option value="UK" >UK</option>
-		      			<option value="US" >US</option>
-		      			<option value="WMCT" >WMCT</option>
-		      			<option value="WMSC" >WMSC</option>
-		      		</select>
+		      			<option ng-repeat="name in domainNameList" ng-value="name">{{name}}</option>
+		          	</select>
 		      	<td><h4>.wal-mart.com</h4>
 		</table>
 		<div>Type of License:-  <input type="radio" name="licensetype" value="Free" ng-model="reConfirmedUser.typeOfLicense" required="required">Free  <input type="radio" name="licensetype" value="Pro" ng-model="user.typeOfLicense" required="required">Pro</div>
 		<div style="height: 28px; "></div>
-		<div><button>submit</button></div>
+		<div><button>Reconfirm&Submit</button></div>
 	</form>
 </div>
 <div ng-bind="returneMessage"></div>
