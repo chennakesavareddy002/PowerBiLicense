@@ -27,7 +27,7 @@ public class PbiLicenseDAOImpl implements PbiLicenseDAO {
 			userEntity.setEmailAddress(user.getEmailAddress());
 			userEntity.setTypeOfLicense(user.getTypeOfLicense());
 			Date currentDate=new Date();
-			String requestedDate=new SimpleDateFormat("yyyy/MM/dd").format(currentDate);
+			String requestedDate=new SimpleDateFormat("yyyy/MM/dd HH:mm:ssZ").format(currentDate);
 			userEntity.setRequestedDate(requestedDate);
 			returnedValue=(Integer) session.save(userEntity);
 			session.getTransaction().commit();
